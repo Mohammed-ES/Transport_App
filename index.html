@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Transport</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css">
+    <style>
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .animate-slide {
+            animation: slideIn 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1 modifiée (sans navigation) -->
+    <div id="page1" class="min-h-screen">
+        <div class="bg-gradient-to-r from-blue-500 to-purple-500 text-white py-20 animate-slide">
+            <div class="container mx-auto text-center">
+                <h1 class="text-5xl font-bold mb-6">Mohammed Transport</h1>
+                <p class="text-xl mb-8">Des solutions de transport fiables et efficaces pour tous vos besoins</p>
+                <button onclick="showPage2()" class="bg-white text-blue-500 px-8 py-3 rounded-full hover:bg-gray-100 transition duration-300">
+                    Ajouter un véhicule
+                </button>
+            </div>
+        </div>
+
+        <div class="container mx-auto py-16 px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Nos Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">Transport VIP</h3>
+                    <p>Service de transport haut de gamme pour vos déplacements professionnels.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">Location de véhicules</h3>
+                    <p>Large gamme de véhicules disponibles pour vos besoins.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">Service 24/7</h3>
+                    <p>Disponible à tout moment pour répondre à vos besoins.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">Transport de marchandises</h3>
+                    <p>Solutions logistiques adaptées pour vos marchandises.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">Transport scolaire</h3>
+                    <p>Service de transport sécurisé pour les établissements scolaires.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">Transport touristique</h3>
+                    <p>Excursions et circuits touristiques organisés.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">Transport de groupe</h3>
+                    <p>Solutions adaptées pour les grands groupes et événements.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">Location longue durée</h3>
+                    <p>Contrats de location flexibles pour entreprises et particuliers.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">Assistance 24/7</h3>
+                    <p>Service d'assistance technique et dépannage disponible en permanence.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2 modifiée -->
+    <div id="page2" class="min-h-screen bg-gray-100 hidden">
+        <div class="container mx-auto py-12 px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Ajouter un Véhicule</h2>
+            <form class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2" for="cin">
+                            CIN 
+                        </label>
+                        <input type="text" id="cin" required
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2" for="type">
+                            Type de véhicule 
+                        </label>
+                        <select id="type" required onchange="updateOptions()"
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                            <option value="">Sélectionnez un type</option>
+                            <option value="voiture">Voiture</option>
+                            <option value="bus">Bus</option>
+                            <option value="camion">Camion</option>
+                            <option value="minibus">Mini-bus</option>
+                            <option value="moteur">Moteur</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2" for="brand">
+                            Marque 
+                        </label>
+                        <select id="brand" required onchange="updateModels()"
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                            <option value="">Sélectionnez d'abord un type</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2" for="model">
+                            Modèle 
+                        </label>
+                        <select id="model" required
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                            <option value="">Sélectionnez d'abord une marque</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2" for="max_passengers">
+                            Nombre max. de passagers 
+                        </label>
+                        <input type="number" id="max_passengers" required min="1"
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2" for="state">
+                            État 
+                        </label>
+                        <select id="state" required
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                            <option value="">Sélectionnez un état</option>
+                            <option value="neuf">Neuf</option>
+                            <option value="occasion">Occasion</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2" for="year">
+                            Année de fabrication 
+                        </label>
+                        <select id="year" required
+                            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <button type="submit" class="bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition duration-300">
+                        Ajouter le véhicule
+                    </button>
+                </div>
+            </form>
+            <div class="text-center mt-6">
+                <button onclick="showPage1()" class="text-blue-500 hover:text-blue-700">
+                    Retour à l'accueil
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Données pour les options dynamiques
+        const vehicleData = {
+            voiture: {
+                brands: ['Toyota', 'Volkswagen', 'Ford', 'Honda', 'Hyundai'],
+                models: {
+                    'Toyota': ['Corolla', 'Camry', 'RAV4', 'Yaris'],
+                    'Volkswagen': ['Golf', 'Passat', 'Polo', 'Tiguan'],
+                    'Ford': ['Fiesta', 'Focus', 'Mustang', 'Explorer'],
+                    'Honda': ['Civic', 'Accord', 'CR-V', 'HR-V'],
+                    'Hyundai': ['i20', 'i30', 'Tucson', 'Santa Fe']
+                }
+            },
+            bus: {
+                brands: ['Mercedes-Benz', 'Volvo', 'Scania', 'MAN'],
+                models: {
+                    'Mercedes-Benz': ['Tourismo', 'Citaro', 'Conecto', 'Travego'],
+                    'Volvo': ['9700', '9900', 'B8R', 'B11R'],
+                    'Scania': ['Touring', 'Citywide', 'Interlink', 'OmniExpress'],
+                    'MAN': ['Lions Coach', 'Lions City', 'Lions Intercity']
+                }
+            },
+            camion: {
+                brands: ['Volvo', 'Scania', 'MAN', 'Mercedes-Benz', 'DAF'],
+                models: {
+                    'Volvo': ['FH', 'FM', 'FMX', 'FL'],
+                    'Scania': ['R Series', 'S Series', 'P Series', 'G Series'],
+                    'MAN': ['TGX', 'TGS', 'TGM', 'TGL'],
+                    'Mercedes-Benz': ['Actros', 'Arocs', 'Atego', 'Econic'],
+                    'DAF': ['XF', 'CF', 'LF']
+                }
+            },
+            minibus: {
+                brands: ['Mercedes-Benz', 'Volkswagen', 'Ford', 'Iveco'],
+                models: {
+                    'Mercedes-Benz': ['Sprinter', 'Vito', 'V-Class'],
+                    'Volkswagen': ['Crafter', 'Transporter', 'Caravelle'],
+                    'Ford': ['Transit', 'Tourneo', 'Custom'],
+                    'Iveco': ['Daily', 'Tourys', 'Wing']
+                }
+            },
+            moteur: {
+                brands: ['Honda', 'Yamaha', 'Suzuki', 'Kawasaki'],
+                models: {
+                    'Honda': ['CBR', 'CB', 'Africa Twin', 'Gold Wing'],
+                    'Yamaha': ['MT', 'R1', 'R6', 'Ténéré'],
+                    'Suzuki': ['GSX-R', 'V-Strom', 'Hayabusa', 'Burgman'],
+                    'Kawasaki': ['Ninja', 'Z', 'Versys', 'Vulcan']
+                }
+            }
+        };
+
+        // Initialisation des années
+        function initYears() {
+            const yearSelect = document.getElementById('year');
+            const currentYear = new Date().getFullYear();
+            yearSelect.innerHTML = '<option value="">Sélectionnez une année</option>';
+            for (let year = currentYear; year >= currentYear - 10; year--) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                yearSelect.appendChild(option);
+            }
+        }
+
+        // Mise à jour des marques en fonction du type
+        function updateOptions() {
+            const type = document.getElementById('type').value;
+            const brandSelect = document.getElementById('brand');
+            const modelSelect = document.getElementById('model');
+
+            brandSelect.innerHTML = '<option value="">Sélectionnez une marque</option>';
+            modelSelect.innerHTML = '<option value="">Sélectionnez d\'abord une marque</option>';
+
+            if (type && vehicleData[type]) {
+                vehicleData[type].brands.forEach(brand => {
+                    const option = document.createElement('option');
+                    option.value = brand;
+                    option.textContent = brand;
+                    brandSelect.appendChild(option);
+                });
+            }
+        }
+
+        // Mise à jour des modèles en fonction de la marque
+        function updateModels() {
+            const type = document.getElementById('type').value;
+            const brand = document.getElementById('brand').value;
+            const modelSelect = document.getElementById('model');
+
+            modelSelect.innerHTML = '<option value="">Sélectionnez un modèle</option>';
+
+            if (type && brand && vehicleData[type].models[brand]) {
+                vehicleData[type].models[brand].forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.textContent = model;
+                    modelSelect.appendChild(option);
+                });
+            }
+        }
+
+        function showPage1() {
+            document.getElementById('page1').classList.remove('hidden');
+            document.getElementById('page2').classList.add('hidden');
+        }
+
+        function showPage2() {
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.remove('hidden');
+            initYears();
+        }
+
+        // Gestion du formulaire
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Véhicule ajouté avec succès !');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
